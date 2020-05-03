@@ -16,7 +16,9 @@ inv = 255-gray
 gauss = cv2.GaussianBlur(inv, ksize=(15,15), sigmaX=0,sigmaY=0)
 canny=cv2.Canny(255-gauss,50, 100)
 
+ret, thresh1 = cv2.threshold(canny, 0, 255, cv2.THRESH_BINARY_INV)
+
 cv2.imshow('Original', img)
-cv2.imshow('rough sketch', canny)
+cv2.imshow('rough sketch', thresh1)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
